@@ -1,0 +1,59 @@
+<div class="card bg-transparent" style="translate: (-0.2rem,-0.1rem)">
+  <div class="card-body">
+    <h5 class="card-title" style="color: #fff; font-size: 2rem">Search Music Tracks..</h5>
+    <div class="form-group row">
+      <input type="text" #newquery [value]="query" class="col-md-11 form-control" style="font-size: 1.3rem; color: #888;"
+        (keydown.enter)="submit(newquery.value)">
+      <button (click)="submit(newquery.value)" class="btn btn-primary col-md-1" type="button">Search</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="results">
+  <!-- <div *ngIf="results && !results.length">
+      <h5 style="text-align: center;font-family: cursive;
+      color: blue;">No tracks were found with the term '{{ query }}'</h5>
+    </div> -->
+  <div *ngIf="results && results.length>0;else resultEmptyBlock">
+
+    <div class="row">
+      <div class="col-md-4 col-sm-12 mb-2" *ngFor="let t of results">
+        <div class="ml-2 card card-hover shadow h-100">
+          <h3 class="card-header"> Track :
+            <a [routerLink]="['/tracks', t.id]">
+              {{ t.name }}
+            </a>
+          </h3>
+
+          <img src="{{ t.album.images[0].url }}" class="card-img-top">
+          <div class="card-body">
+            <div class="content">
+
+
+              <div class="caption">
+                <h3> Artist -
+                  <a [routerLink]="['/artists', t.artists[0].id]">
+                    {{ t.artists[0].name }}
+                  </a>
+                </h3>
+
+
+              </div>
+              <div class="attribution">
+                <h4>Album -
+                  <a [routerLink]="['/albums', t.album.id]">
+                    {{ t.album.name }}
+                  </a>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #resultEmptyBlock>
+    <h5 style="text-align: center;font-family: cursive;
+        color: blue;">No tracks were found with the term '{{
+      query }}'</h5>
+  </ng-template>
+</div>

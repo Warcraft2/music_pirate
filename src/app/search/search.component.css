@@ -1,0 +1,10 @@
+.card-hover:hover{
+z-index: 2;
+transform: translate(-0.3rem, -0.6rem);
+}
+.bor-b-1{
+  border-bottom: 1rem solid !important;
+  border-top: 0rem !important;
+  border-left: 0rem !important;
+  border-right: 0rem !important;
+}

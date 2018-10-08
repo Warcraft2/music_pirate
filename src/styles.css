@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+#background{
+  -webkit-filter: blur(1000px); /* Safari 6.0 - 9.0 */
+  filter: blur(1000px);
+}
